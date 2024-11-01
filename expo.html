@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M.E.E.I.</title>
+    <link rel="icon" href="https://i.imgur.com/QVrBNsR.jpg" type="image/jpg">
+
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background-color: #007acc;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 0 0 20px 20px; /* Bordes redondeados en la parte inferior */
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        nav {
+            display: flex;
+            justify-content: flex-end; /* Alineación a la derecha */
+            margin: 10px 20px; /* Espaciado desde el borde */
+            padding: 0;
+            position: relative;
+        }
+        .nav-menu {
+            display: flex;
+            align-items: center;
+        }
+        .nav-menu a {
+            text-decoration: none;
+            color: #007acc;
+            padding: 10px 15px;
+            font-size: 1em;
+            border-radius: 20px;
+            transition: background-color 0.3s, color 0.3s;
+            position: relative;
+            display: block;
+        }
+        .nav-menu a:hover {
+            background-color: #007acc;
+            color: #fff;
+        }
+        .nav-menu .menu-icon {
+            font-size: 2em; /* Ajusta el tamaño del ícono aquí */
+            display: block;
+        }
+        .dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+        .dropdown a {
+            color: #007acc;
+            padding: 10px 20px;
+            font-size: 1em;
+            display: block;
+            text-align: left;
+        }
+        .dropdown a:hover {
+            background-color: #007acc;
+            color: #fff;
+        }
+        .nav-menu:hover .dropdown {
+            display: block;
+        }
+        main {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 30px;
+        }
+        footer {
+            background-color: #007acc;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            width: calc(100% - 40px);
+            bottom: 0;
+            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 10px 10px 0 0;
+            margin: 0 20px;
+        }
+        footer p {
+            margin: 0;
+            font-size: 0.9em;
+        }
+
+        /* Estilos para los modales */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+            padding-top: 60px;
+        }
+        .modal-content {
+            background-color: #fff;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 1000px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .modal-body {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .modal-body .section {
+            flex: 1 1 300px; /* Ajusta el ancho de las secciones */
+            box-sizing: border-box;
+        }
+        .modal-body img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .modal-body p {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>M.E.E.I.</h1>
+    </header>
+    <nav>
+        <div class="nav-menu">
+            <a href="#" class="menu-icon" id="menu-icon">☰</a>
+            <div class="dropdown">
+                <a href="#" id="open-about">Sobre Nosotros</a>
+                <a href="#" id="open-contact">Contacto</a>
+            </div>
+        </div>
+    </nav>
+    <main>
+        <h2>¿Qué es M.E.E.I.?</h2>
+        <p>Un medidor de energía inteligente que ayuda a las personas a ver cuánta electricidad usan de inmediato, para que sepan exactamente cuánta energía usa su casa o tienda. Este medidor, que tiene una parte Bluetooth, envía los datos que medimos a una aplicación en su teléfono desde la tienda. La aplicación muestra datos en vivo, lo que le permite verificar cuánta energía está usando en este momento y decidir qué hacer al respecto. Brinda detalles como cuánta energía se está usando en este momento y la cantidad total utilizada. Pueden cambiar sus hábitos de inmediato. Esta aplicación es fácil de usar y ayuda a las personas a comprender cuánta energía utilizan de forma clara y directa.</p>
+
+        <h2>Objetivo General</h2>
+        <p>Desarrollar un circuito electrónico capaz de medir la potencia y el amperaje de los equipos electrónicos mediante un sensor no invasivo, permitiendo la monitorización del consumo eléctrico de manera precisa y sin interferir en la conexión directa de los dispositivos así evitando un consumo excesivo de energía eléctrica.</p>
+
+
+        <h2>Objetivos especificos</h2>
+        <ul>
+            <li>Crear un circuito capaz de medir el amperaje de un dispositivo electrico.</li>
+            <li>Mostrar la potencia y el amperaje en uno de los centros de carga del edificio de ECA en el Colegio Técnico Profesional Don Bosco.</li>
+            <li>Implementar un sistema eficiente y seguro para medir el consumo eléctrico.</li>
+        </ul>
+
+        <h2>Necesidad</h2>
+        <p> El proyecto tiene como objetivo ayudar al
+ personal de mantenimiento del Colegio
+ Técnico Cedes Don Bosco a monitorear el
+ consumo eléctrico, identificando los equipos
+ que más energía consumen, y fomentar la
+ conciencia entre los estudiantes del edificio de
+ EMA sobre la importancia de ahorrar energía.</p>
+
+    </main>
+
+    <!-- Modal para Sobre Nosotros -->
+    <div id="modal-about" class="modal">
+        <div class="modal-content">
+            <span class="close" data-modal="modal-about">&times;</span>
+            <h2>Sobre Nosotros</h2>
+            <div class="modal-body">
+                <div class="section">
+                    <img src="https://i.imgur.com/mRHowRa.jpeg" alt="Imagen 1">
+                    <p><strong>Ariadna Abarca Granada:</strong></p>
+                    <p>"El éxito no se mide por lo que logras, sino por los obstáculos que superas en el camino".</p>
+                </div>
+                <div class="section">
+                    <img src="https://i.imgur.com/46rV3tT.jpeg" alt="Imagen 1">
+                    <p><strong>Ariela Abarca Granada:</strong></p>
+                    <p>"Lo que hoy es un desafío, mañana será un avance que hará la diferencia para muchos".</p>
+                </div>
+                <div class="section">
+                    <img src="https://i.imgur.com/Ll1GrLG.jpeg" alt="Imagen 1">
+                    <p><strong>Andrés Fernandez Pérez:</strong></p>
+                    <p>"Siempre realiza el máximo esfuerzo y verás el fruto de tu trabajo".</p>
+                </div>
+                <div class="section">
+                    <img src="https://i.imgur.com/t2t59uP.jpeg" alt="Imagen 1">
+                    <p><strong>Nahima Guido Saenz:</strong></p>
+                    <p>"Cada Expotec es un paso hacia el descubrimiento; ¡sigue explorando!".</p>
+                </div>
+                <div class="section">
+                    <img src="https://i.imgur.com/KQarAYB.jpeg" alt="Imagen 1">
+                    <p><strong>Isaac Quesada Villalobos:</strong></p>
+                    <p>"Trabaja bien en tus deberes y verás los frutos de ello".</p>
+                </div>
+                <div class="section">
+                    <img src="https://i.imgur.com/0mxrMV3.jpeg" alt="Imagen 1">
+                    <p><strong>Samuel Vega Obaldía:</strong></p>
+                    <p>"El talento no siempre es suficiente, a veces hay que esforzarse de más".</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para Servicios -->
+    <div id="modal-services" class="modal">
+        <div class="modal-content">
+            <span class="close" data-modal="modal-services">&times;</span>
+            <h2>Servicios</h2>
+            <p>Aquí puedes describir los servicios que ofreces. Detalla cada servicio para que los visitantes entiendan qué puedes proporcionarles.</p>
+        </div>
+    </div>
+
+    <!-- Modal para Contacto -->
+    <div id="modal-contact" class="modal">
+        <div class="modal-content">
+            <span class="close" data-modal="modal-contact">&times;</span>
+            <h2>Contacto</h2>
+            <p>Para contactarse con nuestro grupo, por consultas y diversos asuntos puede escribirnos a nuestro correo: 2024meei@gmail.com</p>
+        </div>
+    </div>
+
+    <script>
+        // Obtener todos los modales
+        var modals = document.querySelectorAll('.modal');
+
+        // Obtener todos los enlaces que abren los modales
+        var btns = document.querySelectorAll('.dropdown a');
+
+        // Obtener todos los elementos <span> que cierran los modales
+        var spans = document.querySelectorAll('.close');
+
+        // Cuando el usuario haga clic en un enlace, abrir el modal correspondiente
+        btns.forEach(function(btn) {
+            btn.onclick = function() {
+                var modalId = 'modal-' + this.id.split('-')[1];
+                document.getElementById(modalId).style.display = "block";
+            }
+        });
+
+        // Cuando el usuario haga clic en un <span> (x), cerrar el modal correspondiente
+        spans.forEach(function(span) {
+            span.onclick = function() {
+                var modalId = this.getAttribute('data-modal');
+                document.getElementById(modalId).style.display = "none";
+            }
+        });
+
+        // Cuando el usuario haga clic en cualquier lugar fuera del modal, también cerrarlo
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = "none"; // Cambiado a "none" para cerrar el modal correctamente
+            }
+        }
+    </script>
+</body>
+</html>
